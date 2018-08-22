@@ -57,9 +57,9 @@ class Glacial_Popups_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
-	public function enqueue_styles() {
+	public function glacial_enqueue_public_styles() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -75,14 +75,16 @@ class Glacial_Popups_Public {
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/glacial-popups-public.css', array(), $this->version, 'all' );
 
+		wp_register_style( 'lity_css', plugin_dir_url( __FILE__ ) . 'css/lity.css', array( $this->plugin_name ), $this->version, 'all' );
+		wp_enqueue_style( 'lity_css' );
 	}
 
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
-	public function enqueue_scripts() {
+	public function glacial_enqueue_public_scripts() {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -98,6 +100,7 @@ class Glacial_Popups_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/glacial-popups-public.js', array( 'jquery' ), $this->version, false );
 
+		wp_register_style( 'lity_js', plugin_dir_url( __FILE__ ) . 'js/lity.js', array( 'jquery' ), $this->version, true );
+		wp_enqueue_style( 'lity_js' );
 	}
-
 }

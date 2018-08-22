@@ -112,7 +112,7 @@ class Glacial_Popups_Loader {
 	/**
 	 * Register the filters and actions with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function run() {
 
@@ -124,6 +124,9 @@ class Glacial_Popups_Loader {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
 		}
 
+		$g_public_loader = new Glacial_Popups_Public();
+		$g_public_loader->glacial_enqueue_public_scripts();
+		$g_public_loader->glacial_enqueue_public_styles();
 	}
 
 }
